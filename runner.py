@@ -34,7 +34,6 @@ for problem in problems:
         solutions.append(independent + dependent)
 
     # Saving the solutions
-    f = open(solution_folder + problem.name + '.csv',  'w')
-    for solution in solutions:
-        f.write(','.join(map(str, solution)) + '\n')
-    f.close()
+    with open(solution_folder + problem.name + '.csv',  'w') as f:
+        for solution in solutions:
+            f.write(','.join(map(str, solution)) + '\n')

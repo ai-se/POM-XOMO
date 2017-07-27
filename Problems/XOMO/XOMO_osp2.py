@@ -5,10 +5,11 @@ from Problems.XOMO.Base.xomo_liaison import xomol
 
 
 class XOMO_osp2(Problem):
-    "Xomo_osp2"
+    """Xomo_osp2"""
 
     def __init__(self):
-        self.name = "xomoo2"
+        Problem.__init__(self)
+        self.name = "xomo_osp2"
 
         # Should be as xomol.names to maintain order of LOWs and UPs
         names = ["aa", "sced", "cplx", "site", "resl", "acap", "etat", "rely",
@@ -76,10 +77,8 @@ class XOMO_osp2(Problem):
             if min(val) == max(val): bounds[key] = (min(val), max(val) + 0.000001)  # To remove division by 0
 
         self.decisions = [Decision(names[i], bounds[names[i]][0], bounds[names[i]][1]) for i in range(len(names))]
-
         self.objectives = [Objective("Effort", True), Objective("Months", True), Objective("Defects", True), Objective("Risks", True)]
+        self.xomoxo = xomol()
 
-    def evaluate(self, input=None):
-        xomoxo = xomol()
-        return xomoxo.run(input)
-
+    def evaluate(self, decisions):
+        return self.xomoxo.run(decisions)

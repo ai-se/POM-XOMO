@@ -1,5 +1,5 @@
 class Objective:
-    "representation of an objective"
+    """representation of an objective"""
 
     def __init__(self, name, minimize):
         """

@@ -10,7 +10,7 @@ class Problem(object):
         self.objectives = []
 
     def generate_input(self):
-        "a way to generate decisions for this problem"
+        """a way to generate decisions for this problem"""
         while True:  # repeat if we don't meet constraints
             candidate = [round(uniform(decision.low, decision.up), 5) for decision in self.decisions]
             if self.validate(candidate) is True: break
